@@ -132,36 +132,36 @@ function Projects() {
       id: 1,
       title: "Portales Empresariales",
       company: "Grupo Autollanta",
-      description: "Desarrollo de portales web empresariales para gestión interna, incluyendo sistemas de autenticación, dashboards administrativos y módulos de reportes.",
-      technologies: ["React", "Node.js", "MongoDB", "Express"]
+      description: "Desarrollo de portales web empresariales para gestión interna, incluyendo sistemas de autenticación, modulos de reportes y control de datos.",
+      technologies: ["React"]
     },
     {
       id: 2,
-      title: "MamaKanguroProCare",
+      title: "Mamá Kanguro Pro Care",
       company: "App Móvil iOS/Android",
-      description: "Aplicación móvil para el cuidado de bebés prematuros, con seguimiento médico, recordatorios y comunicación con especialistas.",
-      technologies: ["React Native", "Firebase", "Redux", "iOS/Android"]
+      description: "Aplicación móvil para el cuidado de niños a travez de el servicio de niñeras.",
+      technologies: ["React Native", "Supabase", "iOS/Android"]
     },
     {
       id: 3,
       title: "Web Cotizadora",
       company: "AIMEC",
-      description: "Sistema web para cotización de seguros con calculadora interactiva, formularios dinámicos y generación de propuestas personalizadas.",
-      technologies: ["Vue.js", "Laravel", "MySQL", "Bootstrap"]
+      description: "Sistema web para cotización de productos industriales con estilo de tienda en linea.",
+      technologies: ["React", "PostGreSQL", "Tailwind CSS"]
     },
     {
       id: 4,
       title: "Web Corporativa",
       company: "Agendo",
-      description: "Sitio web corporativo moderno con diseño responsive, integración de servicios y sistema de gestión de contenido.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Strapi"]
+      description: "Sitio web moderno con diseño responsive para mostrar los servicios que ofrece la empresa.",
+      technologies: ["React","Strapi"]
     },
     {
       id: 5,
-      title: "Portal Web",
+      title: "Portal Web Front-End",
       company: "Agendo",
       description: "Portal web completo con autenticación de usuarios, panel de administración y funcionalidades avanzadas de gestión.",
-      technologies: ["React", "Node.js", "PostgreSQL", "JWT"]
+      technologies: ["React"]
     }
   ];
 
@@ -176,12 +176,18 @@ function Projects() {
               style={projectCardStyle}
               className="project-card"
               onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-10px)';
-                e.target.style.boxShadow = shadows.xl;
+                // Solo aplicar el efecto al contenedor principal, no a los hijos
+                if (e.target === e.currentTarget) {
+                  e.target.style.transform = 'translateY(-10px)';
+                  e.target.style.boxShadow = shadows.xl;
+                }
               }}
               onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = shadows.lg;
+                // Solo aplicar el efecto al contenedor principal, no a los hijos
+                if (e.target === e.currentTarget) {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = shadows.lg;
+                }
               }}
             >
               {/* Formas decorativas */}

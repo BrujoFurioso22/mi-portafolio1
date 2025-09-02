@@ -1,4 +1,4 @@
-import { colors, shadows, borderRadius } from '../colors';
+import { colors } from '../colors';
 
 function About() {
   // Estilos para la sección sobre mí
@@ -80,13 +80,20 @@ function About() {
         <div style={aboutContentStyle} className="about-content">
           <div>
             <p style={aboutTextStyle} className="about-text">
-              Soy un desarrollador apasionado con más de 3 años de experiencia 
-              en el desarrollo de aplicaciones web. Me especializo en tecnologías 
-              modernas como React, Node.js y bases de datos.
+              Soy Diego Barbecho, un desarrollador de software proactivo y motivado 
+              por ampliar mi experiencia en el área de Desarrollo y Sistemas. 
+              Aunque mi trayectoria laboral es reciente, estoy entusiasmado por aplicar 
+              los conocimientos adquiridos y seguir aprendiendo de equipos profesionales.
             </p>
             <p style={aboutTextStyle} className="about-text">
-              Mi enfoque se centra en crear soluciones eficientes, escalables 
-              y con una excelente experiencia de usuario.
+              Me considero una persona responsable, organizada y comprometida. 
+              Poseo experiencia en desarrollo frontend y backend, así como en bases de datos, 
+              utilizando lenguajes como JavaScript, Python y SQL, y frameworks como React y Express.js.
+            </p>
+            <p style={aboutTextStyle} className="about-text">
+              También manejo herramientas de despliegue como Vercel, Supabase y Railway, 
+              además de tener conocimientos en desarrollo de aplicaciones móviles con 
+              React Native para iOS y Android.
             </p>
           </div>
           <div style={aboutShapesStyle} className="about-shapes">

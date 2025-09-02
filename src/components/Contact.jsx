@@ -1,5 +1,5 @@
 import { colors, shadows, borderRadius } from "../colors";
-
+import { FaPhone, FaEnvelope, FaLinkedin } from "react-icons/fa";
 function Contact() {
   // Estilos para la sección de contacto
   const contactSectionStyle = {
@@ -41,6 +41,10 @@ function Contact() {
   };
 
   const contactCardStyle = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     background: colors.bgCard,
     borderRadius: borderRadius.lg,
     padding: "2rem",
@@ -77,6 +81,12 @@ function Contact() {
     color: colors.textSecondary,
     fontSize: "1rem",
     lineHeight: 1.6,
+    marginBottom: "1.5rem",
+  };
+  const contactCardTextStyle2 = {
+    color: colors.primary,
+    fontSize: "0.9rem",
+    lineHeight: 1.1,
     marginBottom: "1.5rem",
   };
 
@@ -132,25 +142,28 @@ function Contact() {
   const contactInfo = [
     {
       id: 1,
-      icon: "PH",
+      icon: <FaPhone />,
       title: "Teléfono",
       text: "Disponible para llamadas y WhatsApp",
-      link: "tel:+1234567890",
+      text2: "+593 96 930 7527",
+      link: "tel:+593969307527", // Cambia por tu número real
       linkText: "Llamar Ahora",
     },
     {
       id: 2,
-      icon: "@",
+      icon: <FaEnvelope />,
       title: "Email",
       text: "Respuesta rápida en 24 horas",
+      text2: "diegobw13@gmail.com",
       link: "mailto:diegobw13@gmail.com",
       linkText: "Enviar Email",
     },
     {
       id: 3,
-      icon: "IN",
+      icon: <FaLinkedin />,
       title: "LinkedIn",
       text: "Conecta conmigo profesionalmente",
+      text2: "diegobarbechoc",
       link: "https://www.linkedin.com/in/diegobarbechoc/",
       linkText: "Ver Perfil",
     },
@@ -182,12 +195,18 @@ function Contact() {
               style={contactCardStyle}
               className="contact-card"
               onMouseEnter={(e) => {
-                e.target.style.transform = "translateY(-5px)";
-                e.target.style.boxShadow = shadows.xl;
+                // Solo aplicar el efecto al contenedor principal, no a los hijos
+                if (e.target === e.currentTarget) {
+                  e.target.style.transform = "translateY(-5px)";
+                  e.target.style.boxShadow = shadows.xl;
+                }
               }}
               onMouseLeave={(e) => {
-                e.target.style.transform = "translateY(0)";
-                e.target.style.boxShadow = shadows.lg;
+                // Solo aplicar el efecto al contenedor principal, no a los hijos
+                if (e.target === e.currentTarget) {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = shadows.lg;
+                }
               }}
             >
               <div style={contactIconStyle} className="contact-icon">
@@ -199,6 +218,7 @@ function Contact() {
               <p style={contactCardTextStyle} className="contact-card-text">
                 {contact.text}
               </p>
+              <p style={contactCardTextStyle2}>{contact.text2}</p>
               <a
                 href={contact.link}
                 style={contactLinkStyle}

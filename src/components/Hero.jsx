@@ -1,4 +1,4 @@
-import { colors, borderRadius } from '../colors';
+import { colors, shadows, borderRadius } from "../colors";
 
 function Hero() {
   // Función para scroll suave
@@ -6,8 +6,8 @@ function Hero() {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -20,131 +20,135 @@ function Hero() {
 
   // Estilos para la sección hero
   const heroSectionStyle = {
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
     background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.primaryLight} 100%)`,
-    position: 'relative',
-    overflow: 'hidden',
-    paddingTop: '80px'
+    position: "relative",
+    overflow: "hidden",
+    paddingTop: "80px",
   };
 
   const heroContentStyle = {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 2rem',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '4rem',
-    alignItems: 'center',
-    position: 'relative',
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "0 2rem",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "4rem",
+    alignItems: "center",
+    position: "relative",
     zIndex: 2,
-    minHeight: 'calc(100vh - 80px)'
+    minHeight: "calc(100vh - 80px)",
   };
 
   const heroTextStyle = {
-    color: colors.textWhite
+    color: colors.textWhite,
   };
 
   const heroTitleStyle = {
-    fontSize: '3.5rem',
+    fontSize: "3.5rem",
     fontWeight: 700,
-    marginBottom: '1.5rem',
+    marginBottom: "1.5rem",
     lineHeight: 1.2,
     margin: 0,
-    textAlign: 'left'
+    textAlign: "left",
   };
 
   const highlightStyle = {
     color: colors.accent,
-    position: 'relative'
+    position: "relative",
   };
 
   const heroSubtitleStyle = {
-    fontSize: '1.5rem',
-    marginBottom: '1rem',
+    fontSize: "1.5rem",
+    marginBottom: "1rem",
     opacity: 0.9,
     fontWeight: 300,
-    margin: '0 0 1rem 0',
-    textAlign: 'left'
+    margin: "0 0 1rem 0",
+    textAlign: "left",
   };
 
   const heroDescriptionStyle = {
-    fontSize: '1.1rem',
-    marginBottom: '2.5rem',
+    fontSize: "1.1rem",
+    marginBottom: "2.5rem",
     opacity: 0.8,
     lineHeight: 1.6,
-    margin: '0 0 2.5rem 0',
-    textAlign: 'left'
+    margin: "0 0 2.5rem 0",
+    textAlign: "left",
   };
 
   const heroButtonsStyle = {
-    display: 'flex',
-    gap: '1rem'
+    display: "flex",
+    gap: "1rem",
   };
 
   const btnStyle = {
-    display: 'inline-block',
-    padding: '0.875rem 2rem',
+    display: "inline-block",
+    padding: "0.875rem 2rem",
     borderRadius: borderRadius.md,
-    textDecoration: 'none',
+    textDecoration: "none",
     fontWeight: 600,
-    transition: 'all 0.3s ease',
-    border: '2px solid transparent'
+    transition: "all 0.3s ease",
+    border: "2px solid transparent",
   };
 
   const btnPrimaryStyle = {
     ...btnStyle,
     background: colors.accent,
-    color: colors.primaryDark
+    color: colors.primaryDark,
+    hover: {
+      background: colors.accent,
+      color: colors.primaryDark,
+    },
   };
 
   const btnOutlineStyle = {
     ...btnStyle,
-    background: 'transparent',
+    background: "transparent",
     color: colors.accent,
-    borderColor: colors.accent
+    borderColor: colors.accent,
   };
 
   // Estilos para las formas decorativas
   const heroShapesStyle = {
-    position: 'relative',
-    height: '400px'
+    position: "relative",
+    height: "400px",
   };
 
   const shapeBaseStyle = {
-    position: 'absolute',
-    borderRadius: '50%',
+    position: "absolute",
+    borderRadius: "50%",
     background: `linear-gradient(45deg, ${colors.accent}, ${colors.accentLight})`,
     opacity: 0.1,
-    animation: 'float 6s ease-in-out infinite'
+    animation: "float 6s ease-in-out infinite",
   };
 
   const shape1Style = {
     ...shapeBaseStyle,
-    width: '200px',
-    height: '200px',
-    top: '20%',
-    right: '10%',
-    animationDelay: '0s'
+    width: "200px",
+    height: "200px",
+    top: "20%",
+    right: "10%",
+    animationDelay: "0s",
   };
 
   const shape2Style = {
     ...shapeBaseStyle,
-    width: '150px',
-    height: '150px',
-    top: '60%',
-    right: '30%',
-    animationDelay: '2s'
+    width: "150px",
+    height: "150px",
+    top: "60%",
+    right: "30%",
+    animationDelay: "2s",
   };
 
   const shape3Style = {
     ...shapeBaseStyle,
-    width: '100px',
-    height: '100px',
-    top: '10%',
-    right: '50%',
-    animationDelay: '4s'
+    width: "100px",
+    height: "100px",
+    top: "10%",
+    right: "50%",
+    animationDelay: "4s",
   };
 
   return (
@@ -152,28 +156,53 @@ function Hero() {
       <div style={heroContentStyle} className="hero-content">
         <div style={heroTextStyle}>
           <h1 style={heroTitleStyle} className="hero-title">
-            Hola, soy <span style={highlightStyle}>Desarrollador</span>
+            Hola, soy <span style={highlightStyle}>Diego Barbecho</span>
           </h1>
           <p style={heroSubtitleStyle} className="hero-subtitle">
-            Especializado en crear experiencias digitales únicas y funcionales
+            Desarrollador de Software Full-Stack
           </p>
           <p style={heroDescriptionStyle} className="hero-description">
-            Trabajo como desarrollador full-stack, creando aplicaciones web modernas 
-            y soluciones tecnológicas que marcan la diferencia. Mi pasión es transformar 
-            ideas en realidad a través del código.
+            Desarrollador proactivo y motivado, especializado en frontend y backend. 
+            Experiencia en JavaScript, Python, React, Express.js y React Native. 
+            Apasionado por crear aplicaciones web y móviles que generen valor real 
+            para las empresas, con enfoque en gestión de datos y automatización.
           </p>
           <div style={heroButtonsStyle} className="hero-buttons">
-            <a 
-              href="#proyectos" 
+            <a
+              href="#proyectos"
               style={btnPrimaryStyle}
-              onClick={(e) => handleNavClick(e, 'proyectos')}
+              onClick={(e) => handleNavClick(e, "proyectos")}
+              onMouseEnter={(e) => {
+                e.target.style.background = colors.accentDark;
+                e.target.style.color = colors.primaryDark;
+                e.target.style.transform = "translateY(-2px)";
+                e.target.style.boxShadow = shadows.lg;
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = colors.accent;
+                e.target.style.color = colors.primaryDark;
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "none";
+              }}
             >
               Ver Proyectos
             </a>
-            <a 
-              href="#contacto" 
+            <a
+              href="#contacto"
               style={btnOutlineStyle}
-              onClick={(e) => handleNavClick(e, 'contacto')}
+              onClick={(e) => handleNavClick(e, "contacto")}
+              onMouseEnter={(e) => {
+                e.target.style.background = colors.accent;
+                e.target.style.color = colors.primaryDark;
+                e.target.style.transform = "translateY(-2px)";
+                e.target.style.boxShadow = shadows.lg;
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = "transparent";
+                e.target.style.color = colors.accent;
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "none";
+              }}
             >
               Contactar
             </a>
