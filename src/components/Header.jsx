@@ -82,6 +82,13 @@ function Header() {
             Sobre Mí
           </a>
           <a 
+            href="#skills" 
+            style={navLinkStyle}
+            onClick={(e) => handleNavClick(e, 'skills')}
+          >
+            Tecnologías
+          </a>
+          <a 
             href="#proyectos" 
             style={navLinkStyle}
             onClick={(e) => handleNavClick(e, 'proyectos')}

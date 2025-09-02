@@ -133,35 +133,40 @@ function Projects() {
       title: "Portales Empresariales",
       company: "Grupo Autollanta",
       description: "Desarrollo de portales web empresariales para gestión interna, incluyendo sistemas de autenticación, modulos de reportes y control de datos.",
-      technologies: ["React"]
+      technologies: ["React"],
+      link: "https://www.maxximundo.com/"
     },
     {
       id: 2,
       title: "Mamá Kanguro Pro Care",
       company: "App Móvil iOS/Android",
       description: "Aplicación móvil para el cuidado de niños a travez de el servicio de niñeras.",
-      technologies: ["React Native", "Supabase", "iOS/Android"]
+      technologies: ["React Native", "Supabase", "iOS/Android"],
+      link: "https://www.mamakanguroprocare.com/"
     },
     {
       id: 3,
       title: "Web Cotizadora",
       company: "AIMEC",
       description: "Sistema web para cotización de productos industriales con estilo de tienda en linea.",
-      technologies: ["React", "PostGreSQL", "Tailwind CSS"]
+      technologies: ["React", "PostGreSQL", "Tailwind CSS"],
+      link: "https://www.aimec.com/"
     },
     {
       id: 4,
       title: "Web Corporativa",
       company: "Agendo",
       description: "Sitio web moderno con diseño responsive para mostrar los servicios que ofrece la empresa.",
-      technologies: ["React","Strapi"]
+      technologies: ["React","Strapi"],
+      link: "https://heyagendo.com/"
     },
     {
       id: 5,
       title: "Portal Web Front-End",
       company: "Agendo",
       description: "Portal web completo con autenticación de usuarios, panel de administración y funcionalidades avanzadas de gestión.",
-      technologies: ["React"]
+      technologies: ["React"],
+      link: "https://app.heyagendo.com/"
     }
   ];
 
@@ -189,6 +194,7 @@ function Projects() {
                   e.target.style.boxShadow = shadows.lg;
                 }
               }}
+              onClick={() => window.open(project.link, '_blank')}
             >
               {/* Formas decorativas */}
               <div style={cardShape1Style}></div>

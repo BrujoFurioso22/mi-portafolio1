@@ -31,6 +31,7 @@ body {
 /* Efectos hover para enlaces de navegación */
 a[href="#inicio"]:hover,
 a[href="#sobre-mi"]:hover,
+a[href="#skills"]:hover,
 a[href="#contacto"]:hover {
   color: var(--color-accent) !important;
 }
@@ -135,6 +136,26 @@ a {
     height: 200px !important;
   }
 
+  /* Skills responsive */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+
+  .skill-card {
+    padding: 1.5rem !important;
+  }
+
+  .skill-icon {
+    width: 60px !important;
+    height: 60px !important;
+    font-size: 2rem !important;
+  }
+
+  .skill-name {
+    font-size: 1.1rem !important;
+  }
+
   /* Projects responsive */
   .projects-grid {
     grid-template-columns: 1fr !important;
@@ -224,6 +245,38 @@ a {
 
   .about-text {
     font-size: 1rem !important;
+  }
+
+  /* Skills móvil */
+  .skills-section {
+    padding: 4rem 0 !important;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .skill-card {
+    padding: 1.25rem !important;
+  }
+
+  .skill-icon {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 1.8rem !important;
+  }
+
+  .skill-name {
+    font-size: 1.1rem !important;
+  }
+
+  .skill-level {
+    font-size: 0.85rem !important;
+  }
+
+  .skill-description {
+    font-size: 0.8rem !important;
   }
 
   /* Projects móvil */
