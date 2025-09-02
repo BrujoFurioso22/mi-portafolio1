@@ -1,0 +1,192 @@
+import { colors, borderRadius } from '../colors';
+
+function Hero() {
+  // Función para scroll suave
+  const smoothScrollTo = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  // Manejar clicks en enlaces de navegación
+  const handleNavClick = (e, elementId) => {
+    e.preventDefault();
+    smoothScrollTo(elementId);
+  };
+
+  // Estilos para la sección hero
+  const heroSectionStyle = {
+    minHeight: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.primaryLight} 100%)`,
+    position: 'relative',
+    overflow: 'hidden',
+    paddingTop: '80px'
+  };
+
+  const heroContentStyle = {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '0 2rem',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '4rem',
+    alignItems: 'center',
+    position: 'relative',
+    zIndex: 2,
+    minHeight: 'calc(100vh - 80px)'
+  };
+
+  const heroTextStyle = {
+    color: colors.textWhite
+  };
+
+  const heroTitleStyle = {
+    fontSize: '3.5rem',
+    fontWeight: 700,
+    marginBottom: '1.5rem',
+    lineHeight: 1.2,
+    margin: 0,
+    textAlign: 'left'
+  };
+
+  const highlightStyle = {
+    color: colors.accent,
+    position: 'relative'
+  };
+
+  const heroSubtitleStyle = {
+    fontSize: '1.5rem',
+    marginBottom: '1rem',
+    opacity: 0.9,
+    fontWeight: 300,
+    margin: '0 0 1rem 0',
+    textAlign: 'left'
+  };
+
+  const heroDescriptionStyle = {
+    fontSize: '1.1rem',
+    marginBottom: '2.5rem',
+    opacity: 0.8,
+    lineHeight: 1.6,
+    margin: '0 0 2.5rem 0',
+    textAlign: 'left'
+  };
+
+  const heroButtonsStyle = {
+    display: 'flex',
+    gap: '1rem'
+  };
+
+  const btnStyle = {
+    display: 'inline-block',
+    padding: '0.875rem 2rem',
+    borderRadius: borderRadius.md,
+    textDecoration: 'none',
+    fontWeight: 600,
+    transition: 'all 0.3s ease',
+    border: '2px solid transparent'
+  };
+
+  const btnPrimaryStyle = {
+    ...btnStyle,
+    background: colors.accent,
+    color: colors.primaryDark
+  };
+
+  const btnOutlineStyle = {
+    ...btnStyle,
+    background: 'transparent',
+    color: colors.accent,
+    borderColor: colors.accent
+  };
+
+  // Estilos para las formas decorativas
+  const heroShapesStyle = {
+    position: 'relative',
+    height: '400px'
+  };
+
+  const shapeBaseStyle = {
+    position: 'absolute',
+    borderRadius: '50%',
+    background: `linear-gradient(45deg, ${colors.accent}, ${colors.accentLight})`,
+    opacity: 0.1,
+    animation: 'float 6s ease-in-out infinite'
+  };
+
+  const shape1Style = {
+    ...shapeBaseStyle,
+    width: '200px',
+    height: '200px',
+    top: '20%',
+    right: '10%',
+    animationDelay: '0s'
+  };
+
+  const shape2Style = {
+    ...shapeBaseStyle,
+    width: '150px',
+    height: '150px',
+    top: '60%',
+    right: '30%',
+    animationDelay: '2s'
+  };
+
+  const shape3Style = {
+    ...shapeBaseStyle,
+    width: '100px',
+    height: '100px',
+    top: '10%',
+    right: '50%',
+    animationDelay: '4s'
+  };
+
+  return (
+    <section id="inicio" style={heroSectionStyle} className="hero-section">
+      <div style={heroContentStyle} className="hero-content">
+        <div style={heroTextStyle}>
+          <h1 style={heroTitleStyle} className="hero-title">
+            Hola, soy <span style={highlightStyle}>Desarrollador</span>
+          </h1>
+          <p style={heroSubtitleStyle} className="hero-subtitle">
+            Especializado en crear experiencias digitales únicas y funcionales
+          </p>
+          <p style={heroDescriptionStyle} className="hero-description">
+            Trabajo como desarrollador full-stack, creando aplicaciones web modernas 
+            y soluciones tecnológicas que marcan la diferencia. Mi pasión es transformar 
+            ideas en realidad a través del código.
+          </p>
+          <div style={heroButtonsStyle} className="hero-buttons">
+            <a 
+              href="#proyectos" 
+              style={btnPrimaryStyle}
+              onClick={(e) => handleNavClick(e, 'proyectos')}
+            >
+              Ver Proyectos
+            </a>
+            <a 
+              href="#contacto" 
+              style={btnOutlineStyle}
+              onClick={(e) => handleNavClick(e, 'contacto')}
+            >
+              Contactar
+            </a>
+          </div>
+        </div>
+        <div style={heroShapesStyle}>
+          <div style={shape1Style}></div>
+          <div style={shape2Style}></div>
+          <div style={shape3Style}></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Hero;
