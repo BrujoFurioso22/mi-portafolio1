@@ -23,7 +23,7 @@ function Hero() {
     minHeight: "100vh",
     display: "flex",
     alignItems: "center",
-    background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.primaryLight} 100%)`,
+    background: colors.primaryDark,
     position: "relative",
     overflow: "hidden",
     paddingTop: "80px",
@@ -119,7 +119,7 @@ function Hero() {
   const shapeBaseStyle = {
     position: "absolute",
     borderRadius: "50%",
-    background: `linear-gradient(45deg, ${colors.accent}, ${colors.accentLight})`,
+    background: colors.accent,
     opacity: 0.1,
     animation: "float 6s ease-in-out infinite",
   };

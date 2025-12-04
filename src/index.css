@@ -1,16 +1,16 @@
 /* Variables CSS para colores y estilos */
 :root {
-  /* Colores primarios - Verde oscuro */
-  --color-primary: #064e3b;
-  --color-primary-dark: #022c22;
-  --color-primary-light: #065f46;
+  /* Colores primarios - Gris oscuro elegante y profesional */
+  --color-primary: #1f2937;
+  --color-primary-dark: #111827;
+  --color-primary-light: #374151;
   
   /* Colores secundarios */
-  --color-secondary: #374151;
-  --color-secondary-dark: #1f2937;
+  --color-secondary: #4b5563;
+  --color-secondary-dark: #374151;
   --color-secondary-light: #6b7280;
   
-  /* Colores de acento - Verde medio */
+  /* Colores de acento - Verde moderno y vibrante */
   --color-accent: #10b981;
   --color-accent-dark: #059669;
   --color-accent-light: #34d399;
@@ -25,16 +25,16 @@
   --color-gray-900: #111827;
   
   /* Colores de texto */
-  --color-text-primary: #1f2937;
-  --color-text-secondary: #4b5563;
-  --color-text-muted: #6b7280;
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #d1d5db;
+  --color-text-muted: #9ca3af;
   --color-text-white: #ffffff;
   
   /* Colores de fondo */
-  --color-bg-primary: #f0fdf4;
-  --color-bg-secondary: #ecfdf5;
-  --color-bg-dark: #064e3b;
-  --color-bg-card: #ffffff;
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #1f2937;
+  --color-bg-dark: #1f2937;
+  --color-bg-card: #374151;
   
   /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);

@@ -19,7 +19,7 @@ function About() {
     fontWeight: 700,
     textAlign: 'center',
     marginBottom: '3rem',
-    color: colors.primary,
+    color: colors.accent,
     margin: '0 0 3rem 0'
   };
 
@@ -46,7 +46,7 @@ function About() {
   const shapeBaseStyle = {
     position: 'absolute',
     borderRadius: '50%',
-    background: `linear-gradient(45deg, ${colors.accent}, ${colors.accentLight})`,
+    background: colors.accent,
     opacity: 0.1,
     animation: 'float 6s ease-in-out infinite'
   };
@@ -57,7 +57,7 @@ function About() {
     height: '120px',
     top: '20%',
     right: '20%',
-    background: `linear-gradient(45deg, ${colors.primary}, ${colors.accent})`,
+    background: colors.accent,
     opacity: 0.2,
     animationDelay: '1s'
   };
@@ -68,7 +68,7 @@ function About() {
     height: '80px',
     top: '60%',
     right: '40%',
-    background: `linear-gradient(45deg, ${colors.accent}, ${colors.accentLight})`,
+    background: colors.accent,
     opacity: 0.3,
     animationDelay: '3s'
   };

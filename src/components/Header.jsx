@@ -24,7 +24,7 @@ function Header() {
     top: 0,
     left: 0,
     right: 0,
-    background: 'rgba(6, 78, 59, 0.95)',
+    background: `rgba(31, 41, 55, 0.95)`,
     backdropFilter: 'blur(10px)',
     zIndex: 1000,
     padding: '1rem 0',

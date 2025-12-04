@@ -4,7 +4,7 @@ function Contact() {
   // Estilos para la sección de contacto
   const contactSectionStyle = {
     padding: "6rem 0",
-    background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.primaryLight} 100%)`,
+    background: colors.primaryDark,
     position: "relative",
     overflow: "hidden",
   };
@@ -53,14 +53,14 @@ function Contact() {
     position: "relative",
     overflow: "hidden",
     transition: "all 0.3s ease",
-    border: `1px solid ${colors.gray200}`,
+    border: `1px solid ${colors.primaryLight}`,
   };
 
   const contactIconStyle = {
     width: "60px",
     height: "60px",
     borderRadius: "50%",
-    background: `linear-gradient(45deg, ${colors.accent}, ${colors.accentLight})`,
+    background: colors.accent,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -73,7 +73,7 @@ function Contact() {
   const contactCardTitleStyle = {
     fontSize: "1.25rem",
     fontWeight: 700,
-    color: colors.primary,
+    color: colors.accent,
     marginBottom: "1rem",
   };
 
@@ -84,7 +84,7 @@ function Contact() {
     marginBottom: "1.5rem",
   };
   const contactCardTextStyle2 = {
-    color: colors.primary,
+    color: colors.accent,
     fontSize: "0.9rem",
     lineHeight: 1.1,
     marginBottom: "1.5rem",
@@ -108,7 +108,7 @@ function Contact() {
     left: "10%",
     width: "150px",
     height: "150px",
-    background: `linear-gradient(45deg, ${colors.accent}, ${colors.accentLight})`,
+    background: colors.accent,
     borderRadius: "50%",
     opacity: 0.1,
     zIndex: 1,
@@ -120,7 +120,7 @@ function Contact() {
     right: "15%",
     width: "200px",
     height: "200px",
-    background: `linear-gradient(45deg, ${colors.accentLight}, ${colors.accent})`,
+    background: colors.accent,
     borderRadius: "50%",
     opacity: 0.1,
     zIndex: 1,
@@ -132,7 +132,7 @@ function Contact() {
     left: "5%",
     width: "100px",
     height: "100px",
-    background: `linear-gradient(45deg, ${colors.primaryLight}, ${colors.accent})`,
+    background: colors.accent,
     borderRadius: "50%",
     opacity: 0.15,
     zIndex: 1,
