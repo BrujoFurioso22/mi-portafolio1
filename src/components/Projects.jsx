@@ -1,6 +1,8 @@
 import { colors, shadows, borderRadius } from "../colors";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 function Projects() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
   // Estilos para la sección de proyectos
   const projectsSectionStyle = {
     padding: "6rem 0",
@@ -152,7 +154,7 @@ function Projects() {
       company: "AIMEC",
       description:
         "Sistema web para cotización de productos industriales con estilo de tienda en linea.",
-      technologies: ["React", "PostGreSQL", "Tailwind CSS"],
+      technologies: ["React", "PostGreSQL", "Tailwind CSS", "Railway"],
       link: "https://www.aimec-ec.com/",
     },
     {
@@ -161,7 +163,7 @@ function Projects() {
       company: "Agendo",
       description:
         "Sitio web moderno con diseño responsive para mostrar los servicios que ofrece la empresa.",
-      technologies: ["React", "Strapi"],
+      technologies: ["React"],
       link: "https://heyagendo.com/",
     },
     {
@@ -186,8 +188,11 @@ function Projects() {
   return (
     <section
       id="proyectos"
+      ref={ref}
       style={projectsSectionStyle}
-      className="projects-section"
+      className={`projects-section section-fade-in ${
+        isVisible ? "visible" : ""
+      }`}
     >
       <div style={containerStyle} className="container">
         <h2 style={sectionTitleStyle} className="section-title">

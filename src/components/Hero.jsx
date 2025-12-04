@@ -1,6 +1,12 @@
+import { useEffect, useState } from "react";
 import { colors, shadows, borderRadius } from "../colors";
 
 function Hero() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
   // Función para scroll suave
   const smoothScrollTo = (elementId) => {
     const element = document.getElementById(elementId);
@@ -152,20 +158,27 @@ function Hero() {
   };
 
   return (
-    <section id="inicio" style={heroSectionStyle} className="hero-section">
+    <section
+      id="inicio"
+      style={heroSectionStyle}
+      className={`hero-section ${
+        isVisible ? "section-fade visible" : "section-fade"
+      }`}
+    >
       <div style={heroContentStyle} className="hero-content">
         <div style={heroTextStyle}>
           <h1 style={heroTitleStyle} className="hero-title">
             Hola, soy <span style={highlightStyle}>Diego Barbecho</span>
           </h1>
           <p style={heroSubtitleStyle} className="hero-subtitle">
-            Desarrollador de Software Full-Stack
+            Desarrollador Frontend
           </p>
           <p style={heroDescriptionStyle} className="hero-description">
-            Desarrollador proactivo y motivado, especializado en frontend y backend. 
-            Experiencia en JavaScript, Python, React, Express.js y React Native. 
-            Apasionado por crear aplicaciones web y móviles que generen valor real 
-            para las empresas, con enfoque en gestión de datos y automatización.
+            Desarrollador proactivo y motivado, especializado en frontend con
+            experiencia en React, JavaScript, React Native, Flutter y tecnologías
+            modernas. También tengo conocimientos básicos en backend con Python
+            y Express.js. Apasionado por crear interfaces web y móviles
+            atractivas y funcionales que generen valor real para las empresas.
           </p>
           <div style={heroButtonsStyle} className="hero-buttons">
             <a

@@ -1,6 +1,9 @@
 import { colors, shadows, borderRadius } from "../colors";
 import { FaPhone, FaEnvelope, FaLinkedin } from "react-icons/fa";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+
 function Contact() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
   // Estilos para la sección de contacto
   const contactSectionStyle = {
     padding: "6rem 0",
@@ -172,8 +175,9 @@ function Contact() {
   return (
     <section
       id="contacto"
+      ref={ref}
       style={contactSectionStyle}
-      className="contact-section"
+      className={`contact-section section-fade-in ${isVisible ? 'visible' : ''}`}
     >
       {/* Formas decorativas de fondo */}
       <div style={contactShape1Style}></div>

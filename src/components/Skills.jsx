@@ -1,6 +1,8 @@
 import { colors, shadows, borderRadius } from "../colors";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 function Skills() {
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
   // Estilos para la sección de skills
   const skillsSectionStyle = {
     padding: "4rem 2rem",
@@ -247,7 +249,12 @@ function Skills() {
   };
 
   return (
-    <section id="skills" style={skillsSectionStyle} className="skills-section">
+    <section
+      id="skills"
+      ref={ref}
+      style={skillsSectionStyle}
+      className={`skills-section section-fade-in ${isVisible ? "visible" : ""}`}
+    >
       {/* Formas decorativas */}
       <div style={decorativeShape1Style}></div>
       <div style={decorativeShape2Style}></div>
