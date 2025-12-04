@@ -1,5 +1,6 @@
 import './App.css';
 import { colors } from './colors';
+import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -16,14 +17,16 @@ function App() {
   };
 
   return (
-    <div style={appStyle}>
-      <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-    </div>
+    <LanguageProvider>
+      <div style={appStyle}>
+        <Header />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </div>
+    </LanguageProvider>
   );
 }
 

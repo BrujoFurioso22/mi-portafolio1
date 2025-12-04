@@ -32,4 +32,3 @@ export function useIntersectionObserver(options = {}) {
 
   return [elementRef, isIntersecting];
 }
-

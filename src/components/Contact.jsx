@@ -1,252 +1,244 @@
+import styled from "styled-components";
 import { colors, shadows, borderRadius } from "../colors";
 import { FaPhone, FaEnvelope, FaLinkedin } from "react-icons/fa";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../translations";
+
+const ContactSection = styled.section`
+  padding: 6rem 0;
+  background: ${colors.primaryDark};
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const ContactContent = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+`;
+
+const ContactTitle = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: ${colors.textWhite};
+`;
+
+const ContactSubtitle = styled.p`
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: ${colors.textWhite};
+  opacity: 0.9;
+`;
+
+const ContactGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+`;
+
+const ContactCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: ${colors.bgCard};
+  border-radius: ${borderRadius.lg};
+  padding: 2rem;
+  text-align: center;
+  box-shadow: ${shadows.lg};
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid ${colors.primaryLight};
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: ${shadows.xl};
+  }
+`;
+
+const ContactIcon = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: ${colors.accent};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.2rem;
+  color: ${colors.primaryDark};
+  font-weight: bold;
+`;
+
+const ContactCardTitle = styled.h3`
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: ${colors.accent};
+  margin-bottom: 1rem;
+`;
+
+const ContactCardText = styled.p`
+  color: ${colors.textSecondary};
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+`;
+
+const ContactCardText2 = styled.p`
+  color: ${colors.accent};
+  font-size: 0.9rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+`;
+
+const ContactLink = styled.a`
+  display: inline-block;
+  background: ${colors.primary};
+  color: ${colors.textWhite};
+  padding: 0.75rem 1.5rem;
+  border-radius: ${borderRadius.md};
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: ${colors.accent};
+    color: ${colors.primaryDark};
+    transform: translateY(-2px);
+  }
+`;
+
+const ContactShape = styled.div`
+  position: absolute;
+  z-index: 1;
+`;
+
+const ContactShape1 = styled(ContactShape)`
+  top: 10%;
+  left: 10%;
+  width: 150px;
+  height: 150px;
+  background: ${colors.accent};
+  border-radius: 50%;
+  opacity: 0.1;
+`;
+
+const ContactShape2 = styled(ContactShape)`
+  bottom: 20%;
+  right: 15%;
+  width: 200px;
+  height: 200px;
+  background: ${colors.accent};
+  border-radius: 50%;
+  opacity: 0.1;
+`;
+
+const ContactShape3 = styled(ContactShape)`
+  top: 50%;
+  left: 5%;
+  width: 100px;
+  height: 100px;
+  background: ${colors.accent};
+  border-radius: 50%;
+  opacity: 0.15;
+`;
 
 function Contact() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
-  // Estilos para la sección de contacto
-  const contactSectionStyle = {
-    padding: "6rem 0",
-    background: colors.primaryDark,
-    position: "relative",
-    overflow: "hidden",
-  };
-
-  const contactContentStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "0 2rem",
-    position: "relative",
-    zIndex: 2,
-  };
-
-  const contactTitleStyle = {
-    fontSize: "2.5rem",
-    fontWeight: 700,
-    textAlign: "center",
-    marginBottom: "1rem",
-    color: colors.textWhite,
-  };
-
-  const contactSubtitleStyle = {
-    fontSize: "1.2rem",
-    textAlign: "center",
-    marginBottom: "3rem",
-    color: colors.textWhite,
-    opacity: 0.9,
-  };
-
-  const contactGridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gap: "2rem",
-    marginTop: "3rem",
-  };
-
-  const contactCardStyle = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    background: colors.bgCard,
-    borderRadius: borderRadius.lg,
-    padding: "2rem",
-    textAlign: "center",
-    boxShadow: shadows.lg,
-    position: "relative",
-    overflow: "hidden",
-    transition: "all 0.3s ease",
-    border: `1px solid ${colors.primaryLight}`,
-  };
-
-  const contactIconStyle = {
-    width: "60px",
-    height: "60px",
-    borderRadius: "50%",
-    background: colors.accent,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "0 auto 1.5rem",
-    fontSize: "1.2rem",
-    color: colors.primaryDark,
-    fontWeight: "bold",
-  };
-
-  const contactCardTitleStyle = {
-    fontSize: "1.25rem",
-    fontWeight: 700,
-    color: colors.accent,
-    marginBottom: "1rem",
-  };
-
-  const contactCardTextStyle = {
-    color: colors.textSecondary,
-    fontSize: "1rem",
-    lineHeight: 1.6,
-    marginBottom: "1.5rem",
-  };
-  const contactCardTextStyle2 = {
-    color: colors.accent,
-    fontSize: "0.9rem",
-    lineHeight: 1.1,
-    marginBottom: "1.5rem",
-  };
-
-  const contactLinkStyle = {
-    display: "inline-block",
-    background: colors.primary,
-    color: colors.textWhite,
-    padding: "0.75rem 1.5rem",
-    borderRadius: borderRadius.md,
-    textDecoration: "none",
-    fontWeight: 600,
-    transition: "all 0.3s ease",
-  };
-
-  // Formas decorativas para contacto
-  const contactShape1Style = {
-    position: "absolute",
-    top: "10%",
-    left: "10%",
-    width: "150px",
-    height: "150px",
-    background: colors.accent,
-    borderRadius: "50%",
-    opacity: 0.1,
-    zIndex: 1,
-  };
-
-  const contactShape2Style = {
-    position: "absolute",
-    bottom: "20%",
-    right: "15%",
-    width: "200px",
-    height: "200px",
-    background: colors.accent,
-    borderRadius: "50%",
-    opacity: 0.1,
-    zIndex: 1,
-  };
-
-  const contactShape3Style = {
-    position: "absolute",
-    top: "50%",
-    left: "5%",
-    width: "100px",
-    height: "100px",
-    background: colors.accent,
-    borderRadius: "50%",
-    opacity: 0.15,
-    zIndex: 1,
-  };
 
   // Datos de contacto
   const contactInfo = [
     {
       id: 1,
       icon: <FaPhone />,
-      title: "Teléfono",
-      text: "Disponible para llamadas y WhatsApp",
+      title: t.contact.phone.title,
+      text: t.contact.phone.text,
       text2: "+593 96 930 7527",
-      link: "tel:+593969307527", // Cambia por tu número real
-      linkText: "Llamar Ahora",
+      link: "tel:+593969307527",
+      linkText: t.contact.phone.linkText,
     },
     {
       id: 2,
       icon: <FaEnvelope />,
-      title: "Email",
-      text: "Respuesta rápida en 24 horas",
+      title: t.contact.email.title,
+      text: t.contact.email.text,
       text2: "diegobw13@gmail.com",
       link: "mailto:diegobw13@gmail.com",
-      linkText: "Enviar Email",
+      linkText: t.contact.email.linkText,
     },
     {
       id: 3,
       icon: <FaLinkedin />,
-      title: "LinkedIn",
-      text: "Conecta conmigo profesionalmente",
+      title: t.contact.linkedin.title,
+      text: t.contact.linkedin.text,
       text2: "diegobarbechoc",
       link: "https://www.linkedin.com/in/diegobarbechoc/",
-      linkText: "Ver Perfil",
+      linkText: t.contact.linkedin.linkText,
     },
   ];
 
   return (
-    <section
+    <ContactSection
       id="contacto"
       ref={ref}
-      style={contactSectionStyle}
-      className={`contact-section section-fade-in ${isVisible ? 'visible' : ''}`}
+      className={`contact-section section-fade-in ${isVisible ? "visible" : ""}`}
     >
-      {/* Formas decorativas de fondo */}
-      <div style={contactShape1Style}></div>
-      <div style={contactShape2Style}></div>
-      <div style={contactShape3Style}></div>
+      <ContactShape1 />
+      <ContactShape2 />
+      <ContactShape3 />
 
-      <div style={contactContentStyle}>
-        <h2 style={contactTitleStyle} className="contact-title">
-          Contáctame
-        </h2>
-        <p style={contactSubtitleStyle} className="contact-subtitle">
-          ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
-        </p>
+      <ContactContent>
+        <ContactTitle className="contact-title">
+          {t.contact.title}
+        </ContactTitle>
+        <ContactSubtitle className="contact-subtitle">
+          {t.contact.subtitle}
+        </ContactSubtitle>
 
-        <div style={contactGridStyle} className="contact-grid">
+        <ContactGrid className="contact-grid">
           {contactInfo.map((contact) => (
-            <div
-              key={contact.id}
-              style={contactCardStyle}
-              className="contact-card"
-              onMouseEnter={(e) => {
-                // Solo aplicar el efecto al contenedor principal, no a los hijos
-                if (e.target === e.currentTarget) {
-                  e.target.style.transform = "translateY(-5px)";
-                  e.target.style.boxShadow = shadows.xl;
-                }
-              }}
-              onMouseLeave={(e) => {
-                // Solo aplicar el efecto al contenedor principal, no a los hijos
-                if (e.target === e.currentTarget) {
-                  e.target.style.transform = "translateY(0)";
-                  e.target.style.boxShadow = shadows.lg;
-                }
-              }}
-            >
-              <div style={contactIconStyle} className="contact-icon">
+            <ContactCard key={contact.id} className="contact-card">
+              <ContactIcon className="contact-icon">
                 {contact.icon}
-              </div>
-              <h3 style={contactCardTitleStyle} className="contact-card-title">
+              </ContactIcon>
+              <ContactCardTitle className="contact-card-title">
                 {contact.title}
-              </h3>
-              <p style={contactCardTextStyle} className="contact-card-text">
+              </ContactCardTitle>
+              <ContactCardText className="contact-card-text">
                 {contact.text}
-              </p>
-              <p style={contactCardTextStyle2}>{contact.text2}</p>
-              <a
+              </ContactCardText>
+              <ContactCardText2>{contact.text2}</ContactCardText2>
+              <ContactLink
                 href={contact.link}
-                style={contactLinkStyle}
                 className="contact-link"
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={(e) => {
-                  e.target.style.background = colors.accent;
-                  e.target.style.color = colors.primaryDark;
-                  e.target.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = colors.primary;
-                  e.target.style.color = colors.textWhite;
-                  e.target.style.transform = "translateY(0)";
-                }}
               >
                 {contact.linkText}
-              </a>
-            </div>
+              </ContactLink>
+            </ContactCard>
           ))}
-        </div>
-      </div>
-    </section>
+        </ContactGrid>
+      </ContactContent>
+    </ContactSection>
   );
 }
 

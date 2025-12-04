@@ -1,12 +1,167 @@
 import { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import { colors, shadows, borderRadius } from "../colors";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations } from "../translations";
+
+const floatAnimation = keyframes`
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+`;
+
+const HeroSection = styled.section`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: ${colors.primaryDark};
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+
+  &.visible {
+    opacity: 1;
+  }
+`;
+
+const HeroContent = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 80px);
+`;
+
+const HeroText = styled.div`
+  color: ${colors.textWhite};
+`;
+
+const HeroTitle = styled.h1`
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  text-align: left;
+`;
+
+const Highlight = styled.span`
+  color: ${colors.accent};
+  position: relative;
+`;
+
+const HeroSubtitle = styled.p`
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  font-weight: 300;
+  text-align: left;
+`;
+
+const HeroDescription = styled.p`
+  font-size: 1.1rem;
+  margin: 0 0 2.5rem 0;
+  opacity: 0.8;
+  line-height: 1.6;
+  text-align: left;
+`;
+
+const HeroButtons = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const Button = styled.a`
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  border-radius: ${borderRadius.md};
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+`;
+
+const PrimaryButton = styled(Button)`
+  background: ${colors.accent};
+  color: ${colors.primaryDark};
+
+  &:hover {
+    background: ${colors.accentDark};
+    transform: translateY(-2px);
+    box-shadow: ${shadows.lg};
+  }
+`;
+
+const OutlineButton = styled(Button)`
+  background: transparent;
+  color: ${colors.accent};
+  border-color: ${colors.accent};
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    background: ${colors.accent};
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: ${shadows.lg};
+  }
+`;
+
+const HeroShapes = styled.div`
+  position: relative;
+  height: 400px;
+`;
+
+const ShapeBase = styled.div`
+  position: absolute;
+  border-radius: 50%;
+  background: ${colors.accent};
+  opacity: 0.1;
+  animation: ${floatAnimation} 6s ease-in-out infinite;
+`;
+
+const Shape1 = styled(ShapeBase)`
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  right: 10%;
+  animation-delay: 0s;
+`;
+
+const Shape2 = styled(ShapeBase)`
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 30%;
+  animation-delay: 2s;
+`;
+
+const Shape3 = styled(ShapeBase)`
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  right: 50%;
+  animation-delay: 4s;
+`;
 
 function Hero() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
   // Función para scroll suave
   const smoothScrollTo = (elementId) => {
     const element = document.getElementById(elementId);
@@ -24,210 +179,46 @@ function Hero() {
     smoothScrollTo(elementId);
   };
 
-  // Estilos para la sección hero
-  const heroSectionStyle = {
-    minHeight: "100vh",
-    display: "flex",
-    alignItems: "center",
-    background: colors.primaryDark,
-    position: "relative",
-    overflow: "hidden",
-    paddingTop: "80px",
-  };
-
-  const heroContentStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "0 2rem",
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "4rem",
-    alignItems: "center",
-    position: "relative",
-    zIndex: 2,
-    minHeight: "calc(100vh - 80px)",
-  };
-
-  const heroTextStyle = {
-    color: colors.textWhite,
-  };
-
-  const heroTitleStyle = {
-    fontSize: "3.5rem",
-    fontWeight: 700,
-    marginBottom: "1.5rem",
-    lineHeight: 1.2,
-    margin: 0,
-    textAlign: "left",
-  };
-
-  const highlightStyle = {
-    color: colors.accent,
-    position: "relative",
-  };
-
-  const heroSubtitleStyle = {
-    fontSize: "1.5rem",
-    marginBottom: "1rem",
-    opacity: 0.9,
-    fontWeight: 300,
-    margin: "0 0 1rem 0",
-    textAlign: "left",
-  };
-
-  const heroDescriptionStyle = {
-    fontSize: "1.1rem",
-    marginBottom: "2.5rem",
-    opacity: 0.8,
-    lineHeight: 1.6,
-    margin: "0 0 2.5rem 0",
-    textAlign: "left",
-  };
-
-  const heroButtonsStyle = {
-    display: "flex",
-    gap: "1rem",
-  };
-
-  const btnStyle = {
-    display: "inline-block",
-    padding: "0.875rem 2rem",
-    borderRadius: borderRadius.md,
-    textDecoration: "none",
-    fontWeight: 600,
-    transition: "all 0.3s ease",
-    border: "2px solid transparent",
-  };
-
-  const btnPrimaryStyle = {
-    ...btnStyle,
-    background: colors.accent,
-    color: colors.primaryDark,
-    hover: {
-      background: colors.accent,
-      color: colors.primaryDark,
-    },
-  };
-
-  const btnOutlineStyle = {
-    ...btnStyle,
-    background: "transparent",
-    color: colors.accent,
-    borderColor: colors.accent,
-  };
-
-  // Estilos para las formas decorativas
-  const heroShapesStyle = {
-    position: "relative",
-    height: "400px",
-  };
-
-  const shapeBaseStyle = {
-    position: "absolute",
-    borderRadius: "50%",
-    background: colors.accent,
-    opacity: 0.1,
-    animation: "float 6s ease-in-out infinite",
-  };
-
-  const shape1Style = {
-    ...shapeBaseStyle,
-    width: "200px",
-    height: "200px",
-    top: "20%",
-    right: "10%",
-    animationDelay: "0s",
-  };
-
-  const shape2Style = {
-    ...shapeBaseStyle,
-    width: "150px",
-    height: "150px",
-    top: "60%",
-    right: "30%",
-    animationDelay: "2s",
-  };
-
-  const shape3Style = {
-    ...shapeBaseStyle,
-    width: "100px",
-    height: "100px",
-    top: "10%",
-    right: "50%",
-    animationDelay: "4s",
-  };
-
   return (
-    <section
+    <HeroSection
       id="inicio"
-      style={heroSectionStyle}
       className={`hero-section ${
         isVisible ? "section-fade visible" : "section-fade"
       }`}
     >
-      <div style={heroContentStyle} className="hero-content">
-        <div style={heroTextStyle}>
-          <h1 style={heroTitleStyle} className="hero-title">
-            Hola, soy <span style={highlightStyle}>Diego Barbecho</span>
-          </h1>
-          <p style={heroSubtitleStyle} className="hero-subtitle">
-            Desarrollador Frontend
-          </p>
-          <p style={heroDescriptionStyle} className="hero-description">
-            Desarrollador proactivo y motivado, especializado en frontend con
-            experiencia en React, JavaScript, React Native, Flutter y tecnologías
-            modernas. También tengo conocimientos básicos en backend con Python
-            y Express.js. Apasionado por crear interfaces web y móviles
-            atractivas y funcionales que generen valor real para las empresas.
-          </p>
-          <div style={heroButtonsStyle} className="hero-buttons">
-            <a
+      <HeroContent className="hero-content">
+        <HeroText>
+          <HeroTitle className="hero-title">
+            {t.hero.greeting} <Highlight>Diego Barbecho</Highlight>
+          </HeroTitle>
+          <HeroSubtitle className="hero-subtitle">
+            {t.hero.subtitle}
+          </HeroSubtitle>
+          <HeroDescription className="hero-description">
+            {t.hero.description}
+          </HeroDescription>
+          <HeroButtons className="hero-buttons">
+            <PrimaryButton
               href="#proyectos"
-              style={btnPrimaryStyle}
               onClick={(e) => handleNavClick(e, "proyectos")}
-              onMouseEnter={(e) => {
-                e.target.style.background = colors.accentDark;
-                e.target.style.color = colors.primaryDark;
-                e.target.style.transform = "translateY(-2px)";
-                e.target.style.boxShadow = shadows.lg;
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = colors.accent;
-                e.target.style.color = colors.primaryDark;
-                e.target.style.transform = "translateY(0)";
-                e.target.style.boxShadow = "none";
-              }}
             >
-              Ver Proyectos
-            </a>
-            <a
+              {t.hero.buttons.verProyectos}
+            </PrimaryButton>
+            <OutlineButton
               href="#contacto"
-              style={btnOutlineStyle}
               onClick={(e) => handleNavClick(e, "contacto")}
-              onMouseEnter={(e) => {
-                e.target.style.background = colors.accent;
-                e.target.style.color = colors.primaryDark;
-                e.target.style.transform = "translateY(-2px)";
-                e.target.style.boxShadow = shadows.lg;
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = "transparent";
-                e.target.style.color = colors.accent;
-                e.target.style.transform = "translateY(0)";
-                e.target.style.boxShadow = "none";
-              }}
             >
-              Contactar
-            </a>
-          </div>
-        </div>
-        <div style={heroShapesStyle}>
-          <div style={shape1Style}></div>
-          <div style={shape2Style}></div>
-          <div style={shape3Style}></div>
-        </div>
-      </div>
-    </section>
+              {t.hero.buttons.contactar}
+            </OutlineButton>
+          </HeroButtons>
+        </HeroText>
+        <HeroShapes>
+          <Shape1 />
+          <Shape2 />
+          <Shape3 />
+        </HeroShapes>
+      </HeroContent>
+    </HeroSection>
   );
 }
 
